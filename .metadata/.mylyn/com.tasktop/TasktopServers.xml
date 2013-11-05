@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TasktopServers>
-<TasktopServer id="50aa517c-e79d-4c4d-80aa-ba0771886cee" label="Tasktop Account" org.eclipse.mylyn.repositories.proxy.usedefault="true" url="https://tasktop.com/support/licensing/checkLicense.php"/>
-</TasktopServers>
