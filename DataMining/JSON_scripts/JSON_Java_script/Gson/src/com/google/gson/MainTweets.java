@@ -1,14 +1,8 @@
 package com.google.gson;
 
-import java.io.IOException;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.stream.JsonReader;
+import java.io.IOException;
 
 public class MainTweets {
 	public static void main(String [ ] args) //throws IOException
