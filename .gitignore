@@ -2,3 +2,4 @@
 *.gz
 *.json
 .metadata
+*.log
