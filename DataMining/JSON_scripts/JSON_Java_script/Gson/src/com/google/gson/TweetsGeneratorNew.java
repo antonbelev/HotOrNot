@@ -54,7 +54,7 @@ public class TweetsGeneratorNew {
 						String name = reader.nextName();
 						if (name.equals("text")) {
 							line[0] = reader.nextString()
-									.replaceAll("[\n\r,:/;\"\'@?#$!^&*]", "")
+									.replaceAll("[\n\r,:/;\"\'()@?#$!^&*]", "")
 									.toLowerCase();
 						} 
 						else if (name.equals("created_at")) {
