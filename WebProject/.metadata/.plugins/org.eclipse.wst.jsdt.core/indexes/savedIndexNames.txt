@@ -1,6 +1,0 @@
-INDEX VERSION 1.3+C:\Users\antonbelev\Desktop\HotOrNotRepo\WebProject\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-723109900.index
-667118083.index
-1078094572.index
-925937746.index
-2361121158.index
