@@ -1,6 +1,6 @@
 REGISTER '/users/level3/1103816b/Desktop/HotOrNot_repo/DataMining/Pig/Jars/piggybank.jar';
 REGISTER '/users/level3/1103816b/Desktop/HotOrNot_repo/DataMining/Pig/Jars/mysql-connector-java-5.1.18-bin.jar';
-REGISTER '/users/level3/1103816b/Desktop/HotOrNot_repo/DataMining/Pig/Jars/hotornot_07_01_14.jar';
+REGISTER '/users/level3/1103816b/Desktop/HotOrNot_repo/DataMining/Pig/Jars/hotornot_07_01_14_third.jar';
 
 DEFINE GenerateVenueUDF org.gla.anton.udf.production.GenerateVenueUDF('/users/level3/1103816b/Desktop/HotOrNot_repo/DataMining/Pig/venues_regex.txt');
 
@@ -11,7 +11,7 @@ tweetsReduced = foreach tweets generate Text;
 
 venuesTweets = foreach tweetsReduced generate *, GenerateVenueUDF(Text);
 
-venueCounts = FOREACH (GROUP venuesTweets BY venuesTweets::Name) GENERATE group, COUNT($1) as counter;
+venueCounts = FOREACH (GROUP venuesTweets BY $1) GENERATE group, COUNT($1) as counter;
 venueCountsOrdered = order venueCounts by counter;
 
 DUMP venueCountsOrdered;
