@@ -11,7 +11,7 @@ tweetsReduced = foreach tweets generate Text;
 
 venuesTweets = foreach tweetsReduced generate *, GenerateVenueUDF(Text);
 
-venueCounts = FOREACH (GROUP venuesTweets BY venuesTweets::Name) GENERATE group, COUNT($1) as counter;
+venueCounts = FOREACH (GROUP venuesTweets BY $1) GENERATE group, COUNT($1) as counter;
 venueCountsOrdered = order venueCounts by counter;
 
 DUMP venueCountsOrdered;
