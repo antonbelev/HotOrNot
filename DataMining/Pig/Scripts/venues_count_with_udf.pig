@@ -1,6 +1,6 @@
 REGISTER '/users/level3/1103816b/Desktop/HotOrNot_repo/DataMining/Pig/Jars/piggybank.jar';
 REGISTER '/users/level3/1103816b/Desktop/HotOrNot_repo/DataMining/Pig/Jars/mysql-connector-java-5.1.18-bin.jar';
-REGISTER '/users/level3/1103816b/Desktop/HotOrNot_repo/DataMining/Pig/Jars/hotornot_07_01_14.jar';
+REGISTER '/users/level3/1103816b/Desktop/HotOrNot_repo/DataMining/Pig/Jars/hotornot_07_01_14_third.jar';
 
 DEFINE GenerateVenueUDF org.gla.anton.udf.production.GenerateVenueUDF('/users/level3/1103816b/Desktop/HotOrNot_repo/DataMining/Pig/venues_regex.txt');
 
