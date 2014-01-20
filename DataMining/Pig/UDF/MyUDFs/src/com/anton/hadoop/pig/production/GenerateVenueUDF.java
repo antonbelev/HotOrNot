@@ -14,16 +14,20 @@ import org.apache.pig.impl.util.UDFContext;
 public class GenerateVenueUDF extends EvalFunc<String> {
 	private String regex;
 	private static Pattern p;
-
-	@Override
-	public String exec(Tuple tuple) throws IOException {
-		// expect one string
+	
+	public GenerateVenueUDF() throws IOException{
 		String fileName = "venues_regex.txt";
 		FileSystem fs = FileSystem.get(UDFContext.getUDFContext().getJobConf());
 		Scanner sc = new Scanner(fs.open(new Path(fileName)));
 		regex = sc.nextLine(); // should be one line only !!!
 		p = Pattern.compile(regex);
 		sc.close();
+	}
+
+	@Override
+	public String exec(Tuple tuple) throws IOException {
+		// expect one string
+		
 		if (tuple == null) {
 			throw new IllegalArgumentException(
 					"BagTupleExampleUDF: requires at least one input parameter.");
