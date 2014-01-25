@@ -1,0 +1,87 @@
+﻿body 
+{
+    background-color: Gray;
+}
+.divChart
+{
+    float: left;
+    width: 58.7%;
+    height: 250px;
+    margin: 3px;
+    padding: 3px;
+    border-color: #C8C8E6;
+    border-width: 2.5px;
+    border-style: solid;
+    border-radius: 12px;
+}
+
+.divInnderChart div
+{
+    height: 100%;
+}
+
+.divInnderError
+{
+    border-color: #C8C8E6;
+    display:table; 
+}
+
+.error 
+{
+    color: Red;
+    display:table-cell;
+    text-align: center;
+    vertical-align:middle;
+    width:400px;
+    height: 100%;
+    
+    
+}
+
+.divMenu
+{
+    float: right;
+    width: 38%;
+    margin: 3px;
+    padding: 3px;
+    border-color: #C8C8E6;
+    border-width: 2.5px;
+    border-style: solid;
+    height: 250px;
+    border-radius: 12px;
+}
+.clear
+{
+    clear: both !important;
+}
+.menuCollapse
+{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.center
+{
+    text-align: center;
+}
+
+.ulColumns
+{
+    height: 350px;
+    overflow-y: scroll;  
+    overflow-x: hidden;
+    /*height: 170px;*/
+}
+.ulCountries
+{
+    height: 350px;
+    overflow-y:scroll;
+    overflow-x: hidden;
+}
+li.ui-li{
+    padding: 0.01em 10px !important;
+}
+
+.chartTypes .ui-controlgroup-controls {
+	width: 100% !important;
+}
