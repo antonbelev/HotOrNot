@@ -2,17 +2,50 @@
 {
     background-color: Gray;
 }
-.divChart
+
+.leftPanel
 {
-    float: left;
-    width: 58.7%;
-    height: 100%;
+	float: left;
+	width: 59%;
+	margin: 3px;
+    padding: 3px;
+    
+}
+.rightPanel
+{
+    float: right;
+    width: 38.9%;
     margin: 3px;
     padding: 3px;
     border-color: #C8C8E6;
     border-width: 2.5px;
     border-style: solid;
+    height: 100%;
     border-radius: 12px;
+}
+.leftBottomMenu
+{
+	width: 100%;
+	height: 100%;
+    border-color: #C8C8E6;
+    border-width: 2.5px;
+    border-style: solid;
+    border-radius: 12px;
+    margin-top: 3px;
+}
+.divChart
+{
+    height: 100%;
+    border-color: #C8C8E6;
+    border-width: 2.5px;
+    border-style: solid;
+    border-radius: 12px;   
+}
+
+.divChartType
+{
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .divInnderChart div
@@ -37,19 +70,6 @@
     
     
 }
-
-.divMenu
-{
-    float: right;
-    width: 38%;
-    margin: 3px;
-    padding: 3px;
-    border-color: #C8C8E6;
-    border-width: 2.5px;
-    border-style: solid;
-    height: 100%;
-    border-radius: 12px;
-}
 .clear
 {
     clear: both !important;
@@ -72,12 +92,7 @@
     overflow-x: hidden;
     /*height: 170px;*/
 }
-.ulCountries
-{
-    height: 350px;
-    overflow-y:scroll;
-    overflow-x: hidden;
-}
+
 li.ui-li{
     padding: 0.01em 10px !important;
 }

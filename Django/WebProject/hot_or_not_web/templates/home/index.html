@@ -18,23 +18,52 @@
     <body>
     	<div id="mainMenuPanel" class="topMenu">
     		
-    	</div>
-    	
-        <div id="divChart" class="divChart">
-        	<div id="chart_div" class="divInnderChar">
-        	</div>        
+    	</div>     
         
-        </div>  
+        <div class="leftPanel">
+        	<div id="divChart" class="divChart">
+	        	<div id="chart_div" class="divInnderChar">
+	        	</div> 
+        	</div>
+        	<div class="leftBottomMenu">
+        		<div data-role="fieldcontain" class="divChartType">
+					<fieldset data-role="controlgroup" data-type="horizontal" class="center chartTypes" data-mini="true">
+						<input type="radio" name="radio-choice-1" id="radio-choice-1" value="choice-1" checked="checked" />
+						<label for="radio-choice-1">
+							Line Chart</label>
+						<input type="radio" name="radio-choice-1" id="radio-choice-2" value="choice-2" />
+						<label for="radio-choice-2">
+							Bar Chart</label>
+						<input type="radio" name="radio-choice-1" id="radio-choice-3" value="choice-3" />
+						<label for="radio-choice-3">
+							Scatter Plot</label>
+						<input type="radio" name="radio-choice-1" id="radio-choice-4" value="choice-4" />
+						<label for="radio-choice-4">
+							Geo Plot</label>
+					</fieldset>
+				</div>
+        	</div>
+        </div>
         
-        <div id="divMenu" class="divMenu">
+        <div id="divMenu" class="rightPanel">
         	<div data-role="collapsible" class="menuCollapse clpsVenues" data-collapsed="false" data-theme="b">
             <h3>
                 Venues</h3>                
                 <div>
 	                <ul data-role="listview" data-filter="true" class="ulVenues" data-mini="true">
-	                	<li>University of Glasgow</li>
-	                	<li>o2 Academy</li>
-	                	<li>Firhill Stadium</li>
+	                	<li>
+	                		<input type="checkbox" name="glaChck" id="glaChck" checked="checked"/>
+		    				<label for="glaChck">University of Glasgow</label>                	
+	                	</li>   	
+	                	
+	                	<li>
+		                	<input type="checkbox" name="o2Chck" id="o2Chck" checked="checked"/>
+			    			<label for="o2Chck">o2 Academy</label>
+						</li>
+	                	<li>
+	                		<input type="checkbox" name="firhillChck" id="firhillChck" checked="checked"/>
+			    			<label for="firhillChck">Firhill Stadium</label>                	
+	                	</li>
 	                </ul>
             	</div>        	
         	</div>
