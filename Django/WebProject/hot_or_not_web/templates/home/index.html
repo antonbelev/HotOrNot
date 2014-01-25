@@ -6,29 +6,38 @@
     <head>
         <title>Hot or Not</title>
         <link rel="stylesheet" href="{% static "css/main.css" %}" />
+        
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+		
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		<script src="{% static "js/google-charts.js" %}"></script>
 		<script src="{% static "js/main.js" %}"></script>
     </head>
     <body>
     	<div id="mainMenuPanel" class="topMenu">
-    	
+    		
     	</div>
     	
         <div id="divChart" class="divChart">
         	<div id="chart_div" class="divInnderChar">
-        	</div>    
+        	</div>        
         
-        
-        </div>
-        
+        </div>  
         
         <div id="divMenu" class="divMenu">
-        
-        
+        	<div data-role="collapsible" class="menuCollapse clpsVenues" data-collapsed="false" data-theme="b">
+            <h3>
+                Venues</h3>                
+                <div>
+	                <ul data-role="listview" data-filter="true" class="ulVenues" data-mini="true">
+	                	<li>University of Glasgow</li>
+	                	<li>o2 Academy</li>
+	                	<li>Firhill Stadium</li>
+	                </ul>
+            	</div>        	
+        	</div>
         </div>
     </body>
 </html>	
