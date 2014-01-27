@@ -17,8 +17,7 @@ public class GenerateVenueUDF extends EvalFunc<String> {
 	private String regex;
 	private static Pattern p;
 	
-	public GenerateVenueUDF() throws IOException{
-		String fileName = "venues_regex.txt";	
+	public GenerateVenueUDF(String fileName) throws IOException{	
 		FileSystem fs = FileSystem.get(UDFContext.getUDFContext().getJobConf());
 		FSDataInputStream in = fs.open(new Path(fileName));
 		BufferedReader br = new BufferedReader(new InputStreamReader(in));
