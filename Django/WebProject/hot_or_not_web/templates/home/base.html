@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+    <head>
+        <title>Hot or Not</title>
+        <link rel="stylesheet" href="{% static "css/main.css" %}" />
+        
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+		
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		<script src="{% static "js/google-charts.js" %}"></script>
+		<script src="{% static "js/main.js" %}"></script>
+    </head>
+
+    <body>
+		<div id="mainMenuPanel" class="topMenu">   		
+    		{% include "home/top_menu.html" %}
+    	</div>     
+        
+        <div class="leftPanel">
+        	<div id="divChart" class="divChart">
+	        	<div id="chart_div" class="divInnderChar">
+	        	</div> 
+        	</div>     	
+        	
+        	<div class="leftBottomMenu">   
+        		{% include "home/left_bottom_menu.html" %}
+        	</div>
+        </div>        
+        <div id="divMenu" class="rightPanel">
+        	{% include "home/right_menu.html" %}    	
+        </div>
+    </body>
+</html>
