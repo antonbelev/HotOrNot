@@ -1,9 +1,109 @@
-.body 
+body, html
 {
-    background-color: Gray;
+	padding-top: 80px;
+    height: 100%;
 }
 
-.leftPanel
+.clear
+{
+    clear: both !important;
+}
+
+.center
+{
+    text-align: center;
+}
+
+.left-panel 
+{
+  width: 60%;
+  float: left;
+  border-color: #C8C8E6;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+
+.right-panel 
+{
+  width: 38%;
+  height: 100%;
+  float: right;
+  border-color: #C8C8E6;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 6px;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.divChart
+{
+    height: 98%;
+    width: 98%;  
+    margin: 0 auto;
+    border-color: #C8C8E6;
+	border-width: 1.5px;
+	border-style: solid;
+	border-radius: 6px;
+	margin-top: 5px;
+}
+
+.divInnderChar
+{
+	height: 97.5%;
+    width: 97.5%;
+    margin: 0 auto;
+}
+
+.leftBottomMenu
+{
+	width: 98%;
+	height: 98%;
+	margin: 0 auto;
+    border-color: #C8C8E6;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 12px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.leftBottomMenuInner
+{
+	height: 97.5%;
+    width: 97.5%;
+    margin: 0 auto;
+}
+
+.menuCollapse
+{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+
+.ulVenues
+{
+    height: 350px;
+    overflow-y: scroll;  
+    overflow-x: hidden;
+    /*height: 170px;*/
+}
+
+li.ui-li{
+    padding: 0.01em 10px !important;
+}
+
+
+
+
+
+
+
+
+/*.leftPanel
 {
 	float: left;
 	width: 59%;
@@ -64,41 +164,8 @@
     
     
 }
-.clear
-{
-    clear: both !important;
-}
-.menuCollapse
-{
-    margin-left:auto;
-    margin-right:auto;
-}
-
-.center
-{
-    text-align: center;
-}
-
-.ulVenues
-{
-    height: 350px;
-    overflow-y: scroll;  
-    overflow-x: hidden;
-    /*height: 170px;*/
-}
-
-li.ui-li{
-    padding: 0.01em 10px !important;
-}
 
 .chartTypes .ui-controlgroup-controls {
 	width: 100% !important;
 }
-
-.topMenu
-{
-	height: 80px;
-    width: 100%;
-	background-color: #808080; 
-}
-
+*/
