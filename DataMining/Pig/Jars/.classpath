@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="mortar-pig-java-template/src/main/java"/>
+	<classpathentry kind="src" path="mortar-pig-java-template/src/test/java"/>
+	<classpathentry kind="src" path="hot-or-not-udfs"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/cygwin64/pig-0.12.0/pig-0.12.0.jar"/>
+	<classpathentry kind="output" path="mortar-pig-java-template/bin"/>
+</classpath>

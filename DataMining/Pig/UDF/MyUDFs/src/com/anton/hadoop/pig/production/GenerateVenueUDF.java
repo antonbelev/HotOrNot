@@ -1,10 +1,12 @@
 package com.anton.hadoop.pig.production;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Scanner;
+import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.pig.EvalFunc;
@@ -16,12 +18,12 @@ public class GenerateVenueUDF extends EvalFunc<String> {
 	private static Pattern p;
 	
 	public GenerateVenueUDF() throws IOException{
-		String fileName = "venues_regex.txt";
+		String fileName = "venues_regex.txt";	
 		FileSystem fs = FileSystem.get(UDFContext.getUDFContext().getJobConf());
-		Scanner sc = new Scanner(fs.open(new Path(fileName)));
-		regex = sc.nextLine(); // should be one line only !!!
+		FSDataInputStream in = fs.open(new Path(fileName));
+		BufferedReader br = new BufferedReader(new InputStreamReader(in));
+		regex = br.readLine(); // should be one line only !!!
 		p = Pattern.compile(regex);
-		sc.close();
 	}
 
 	@Override
