@@ -30,15 +30,14 @@ DATABASES = {
 
 mysqlconnection = '''DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'teamn',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': 'teamn',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'teamn',                      
         'PASSWORD': '8553mkpw',
-        'HOST': '',        # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '3306',                      # Set to empty string for default.
+        'HOST': 'storo',        
+        'PORT': '3306',
     }
 }'''
+
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
