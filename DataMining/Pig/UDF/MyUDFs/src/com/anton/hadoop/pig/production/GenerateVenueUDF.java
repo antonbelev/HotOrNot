@@ -1,13 +1,19 @@
 package com.anton.hadoop.pig.production;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.hadoop.fs.FSDataInputStream;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
 import org.apache.pig.EvalFunc;
 import org.apache.pig.data.Tuple;
+import org.apache.pig.impl.util.UDFContext;
 
 public class GenerateVenueUDF extends EvalFunc<String> {
 	private String regex;
@@ -24,17 +30,18 @@ public class GenerateVenueUDF extends EvalFunc<String> {
 
 	@Override
 	public String exec(Tuple tuple) throws IOException {
-		// expect one string
-		Scanner sn = new Scanner(new File("/users/level3/1103816b/Desktop/HotOrNot_repo/DataMining/Pig/venues_regex.txt"));
-		regex = sn.nextLine(); // should be one line only !!
-		sn.close();
-		p = Pattern.compile(regex);
-		
+
 		if (tuple == null) {
 			throw new IllegalArgumentException(
 					"BagTupleExampleUDF: requires at least one input parameter.");
 		}
 		try {
+			String fileName = "venues_regex.txt";	
+			FileSystem fs = FileSystem.get(UDFContext.getUDFContext().getJobConf());
+			FSDataInputStream in = fs.open(new Path(fileName));
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			regex = br.readLine(); // should be one line only !!!
+			p = Pattern.compile(regex);
 			String tweet = (String) tuple.get(0);
 //			TupleFactory tf = TupleFactory.getInstance();
 //			BagFactory mBagFactory = BagFactory.getInstance();
