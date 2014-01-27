@@ -21,7 +21,9 @@
 	    <link href="{% static 'css/bootstrap-fluid-adj.css' %}" rel="stylesheet">
 	    <link href="{% static 'css/bootstrap.min.css'% }" rel="stylesheet" media="screen">
 	    <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet">
-	    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />	
+	    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />	    
+	    {% block page_scripts %}
+		{% endblock %}	
     </head>
 
     <body>
@@ -32,23 +34,7 @@
 		
 		<!-- Page Content -->
 		<div class="container">			
-		   <div class="left-panel">
-		       <div id="divChart" class="divChart">
-		        	<div id="chart_div" class="divInnderChar">
-		        	</div> 
-        		</div>
-        		<div class="leftBottomMenu"> 
-        			<div class="leftBottomMenuInner"> 
-        				{% include "home/left_bottom_menu.html" %}
-        			</div>
-        		</div>
-		   </div>
-		   <div class="right-panel">
-		       <div id="divMenu" class="rightPanel">
-        			{% include "home/right_menu.html" %}    	
-           		</div>
-		   </div>
-		   
+		   {% block body_block %}{% endblock %}	   
 	   	</div>
 	   	<!-- End Page Content -->	
 
