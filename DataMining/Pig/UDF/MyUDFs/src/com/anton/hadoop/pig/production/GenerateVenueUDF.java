@@ -42,6 +42,7 @@ public class GenerateVenueUDF extends EvalFunc<String> {
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			regex = br.readLine(); // should be one line only !!!
 			p = Pattern.compile(regex);
+			br.close();
 			String tweet = (String) tuple.get(0);
 //			TupleFactory tf = TupleFactory.getInstance();
 //			BagFactory mBagFactory = BagFactory.getInstance();
