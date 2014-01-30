@@ -27,7 +27,7 @@ public class PatternGenerator {
 		{
 			if (!first && scanner.hasNextLine())
 				printWriter.write("|");
-			printWriter.write("(" + scanner.nextLine().split(",")[0] +")");
+			printWriter.write("(" + scanner.nextLine().split(",")[0].replaceAll("[\n\r,:/;\"\\.'@?#$!^&*]", "") +")");
 			first = false;
 		}
 		scanner.close();
