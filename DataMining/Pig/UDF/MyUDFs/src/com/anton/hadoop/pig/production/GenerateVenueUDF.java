@@ -8,6 +8,8 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
@@ -44,6 +46,9 @@ public class GenerateVenueUDF extends EvalFunc<String> {
 			p = Pattern.compile(regex);
 			br.close();
 			String tweet = (String) tuple.get(0);
+			Log logger = LogFactory.getLog("No constructor UDF Logger");
+			logger.debug(regex);
+			logger.debug(tweet);
 //			TupleFactory tf = TupleFactory.getInstance();
 //			BagFactory mBagFactory = BagFactory.getInstance();
 //			Tuple t = tf.newTuple();
