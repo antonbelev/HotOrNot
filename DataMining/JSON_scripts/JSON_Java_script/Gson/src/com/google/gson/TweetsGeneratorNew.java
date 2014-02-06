@@ -35,7 +35,7 @@ public class TweetsGeneratorNew {
 			file.delete();
 			System.out.println("Entered file generator");
 			BufferedWriter out = new BufferedWriter(new FileWriter(
-					"src/resources/Tweets_Attributes" + ".csv"));
+					"tweets_06_02" + ".csv"));
 			out.write(csvHeader);
 
 			try {
@@ -54,7 +54,7 @@ public class TweetsGeneratorNew {
 						String name = reader.nextName();
 						if (name.equals("text")) {
 							line[0] = reader.nextString()
-									.replaceAll("[\n\r,:/;\"\'()@?#$!^&*]", "")
+									.replaceAll("[\n\r,:/;\"\'(){}.@?#$!^&*]", "")
 									.toLowerCase();
 						} 
 						else if (name.equals("created_at")) {
@@ -70,7 +70,7 @@ public class TweetsGeneratorNew {
 							while (reader.hasNext() == true) {
 								String names2 = reader.nextName();
 								if (names2.equals("location")) {
-									line[7] = reader.nextString().replaceAll("[\n\r,:/;\"\'@?#$!^&*]","").toLowerCase();
+									line[7] = reader.nextString().replaceAll("[\n\r,:/;\"\'(){}.@?#$!^&*]","").toLowerCase();
 								} else if (names2.equals("lang")) {
 									line[8] = reader.nextString().toLowerCase();
 								} else if (names2.equals("followers_count")) {

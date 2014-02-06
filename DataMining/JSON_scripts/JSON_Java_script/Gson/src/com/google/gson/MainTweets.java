@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import com.google.gson.stream.JsonReader;
+
 public class MainTweets {
 	public static void main(String [ ] args) //throws IOException
 	{

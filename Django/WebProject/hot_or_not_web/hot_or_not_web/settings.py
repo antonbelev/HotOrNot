@@ -17,7 +17,7 @@ MANAGERS = ADMINS
 
 DATABASE_PATH = os.path.join(PROJECT_PATH, 'hotornot.db')
 
-DATABASES = {
+mysqlconnection = '''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': DATABASE_PATH,           # Or path to database file if using sqlite3.
@@ -26,18 +26,18 @@ DATABASES = {
         #'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         #'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
-}
+}'''
 
-mysqlconnection = '''DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'teamn',   
         'USER': 'teamn',                    
         'PASSWORD': '8553mkpw',
         'HOST': '127.0.0.1', #storo        
-        'PORT': '3306',
+        'PORT': '3307',
     }
-}'''
+}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name

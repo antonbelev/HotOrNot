@@ -7,8 +7,8 @@
             	{% if venues %}
 	                {% for venue in venues %}
 	                <li>
-	            		<input type="checkbox" name="chck{{ venue }}" id="chck{{ venue }}" checked="checked"/>
-	    				<label for="chck{{ venue }}">{{ venue }}</label>                	
+	            		<input type="checkbox" class="chckVenue"  name="{{ venue }}" id="{{ venue }}" checked="checked"/>
+	    				<label for="{{ venue }}">{{ venue }}</label>                	
 	            	</li> 	                
 	                {% endfor %}
 	            {% else %}
