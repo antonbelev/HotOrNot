@@ -24,10 +24,13 @@ public class PatternGenerator {
 		printWriter.write(".*(");
 		boolean first = true;
 		while(scanner.hasNextLine())
-		{
+		{			
+			String line = scanner.nextLine().split(",")[0].replaceAll("[\n\r,:/;\"\\.'|@?#$!^&*]", "");
+			if (line.equals(""))
+				continue;
 			if (!first && scanner.hasNextLine())
 				printWriter.write("|");
-			printWriter.write("(" + scanner.nextLine().split(",")[0].replaceAll("[\n\r,:/;\"\\.'@?#$!^&*]", "") +")");
+			printWriter.write(line);
 			first = false;
 		}
 		scanner.close();

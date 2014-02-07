@@ -7,17 +7,15 @@ class Test {
 		checkVenue("Test Venue1 test test");
 		checkVenue("Test Venue2 test test");
 		checkVenue("Test Venue3 test test");
-		checkVenue("Test Venue1 Venue2 Venue3 test");
+		checkVenue("Test Venue1 fgdgdfgd Venue1 asdasd Venue3 asdjioo Venue2 dasf test");
 	}
 
 	public static void checkVenue(String tweet) {
-		Pattern p = Pattern.compile(".*((Venue1)|(Venue2)|(Venue3)).*");
+		Pattern p = Pattern.compile("(.*)(Venue1||Venue2|Venue3)(.*)");
 		Matcher m = p.matcher(tweet);
 		System.out.print(tweet + ":\t ");
-		if (m.find()) {
-			System.out.println("found " + m.group(1));
-		} else {
-			System.out.println("found none.");
+		while (m.find()) {
+			System.out.println("found " + m.group(3));
 		}
 	}
 }
