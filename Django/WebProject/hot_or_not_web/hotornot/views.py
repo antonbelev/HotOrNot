@@ -9,7 +9,7 @@ def base(request):
     context_dict = {}
     
     #read venues from db here
-    venues = ['o2 Academy', 'Firhill Stadium', 'T.G.I. Friday\'s', 'University of Glasgow', 'Starbucks']
+    venues = ['o2 Academy', 'Firhill Stadium', 'University of Glasgow']
     
     context_dict['venues'] = venues    
     
