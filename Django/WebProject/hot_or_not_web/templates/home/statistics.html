@@ -5,6 +5,9 @@
 {% block page_scripts %}
 	
 	<script src="{% static "js/google-charts.js" %}"></script>
+	<script>
+		var json = {{ json|safe }};
+	</script>
 
 {% endblock %}
 
