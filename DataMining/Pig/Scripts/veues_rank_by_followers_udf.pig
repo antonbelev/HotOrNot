@@ -5,8 +5,8 @@ REGISTER '/users/level3/1103816b/Desktop/HotOrNot_repo/DataMining/Pig/Jars/hotor
 DEFINE GenerateVenueUDF com.anton.hadoop.pig.production.GenerateVenueUDF();
 --DEFINE GenerateVenueUDF org.gla.anton.udf.production.GenerateVenueUDF('/users/level3/1103816b/Desktop/HotOrNot_repo/DataMining/Pig/venues_regex.txt');
 
-venues = LOAD 'venues_extended_2.csv' USING org.apache.pig.piggybank.storage.CSVLoader() AS (Name:chararray, Type:chararray, Latitude:double, Longitude:double, City:chararray, Country:chararray);
-tweets = LOAD 'tweets_extended.csv' USING org.apache.pig.piggybank.storage.CSVLoader() AS (Text:chararray, WeekDay:chararray, Day:int, Time:chararray, SMT:chararray, Year:int, Location:chararray, Language:chararray, Followers_count:int, Friends_count:int);
+venues = LOAD 'venues_extended_2.csv' USING org.apache.pig.piggybank.storage.CSVLoader() AS (Name:chararray, Type:chararray, Latitude:chararray, Longitude:chararray, City:chararray, Country:chararray);
+tweets = LOAD 'tweets_06_02.csv' USING org.apache.pig.piggybank.storage.CSVLoader() AS (Text:chararray, WeekDay:chararray, Month:chararray, Day:chararray, Time:chararray, Name:chararray, Year:chararray, Location:chararray, Language:chararray, Followerscount:chararray, Friendscount:chararray);
 
 tweetsReduced = foreach tweets generate Text, Followers_count;
 
