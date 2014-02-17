@@ -18,8 +18,10 @@ venuesTweets = foreach tweetsReduced generate *, GenerateVenueUDF(Text) as Venue
 venueCounts = FOREACH (GROUP venuesTweets BY ($1, $2)) GENERATE group, COUNT($1) as counter;
 
 --DESCRIBE venueCounts;
-venueCountsOrdered = order venueCounts by counter;
+--venueCountsOrdered = order venueCounts by counter;
 
-DUMP venueCountsOrdered;
+flattenVenues = foreach venueCounts generate flatten(group), counter;
 
---STORE venueCountsOrdered INTO 'VenueData' USING org.apache.pig.piggybank.storage.DBStorage('com.mysql.jdbc.Driver','jdbc:mysql://storo:3306/teamn', 'teamn', '8553mkpw','INSERT INTO VenueData (Name, Hits) VALUES (?, ?)');
+--DUMP venueCountsOrdered;
+--DESCRIBE flattenVenues;
+STORE flattenVenues INTO 'VenueDay' USING org.apache.pig.piggybank.storage.DBStorage('com.mysql.jdbc.Driver','jdbc:mysql://storo:3306/teamn', 'teamn', '8553mkpw','INSERT INTO VenueDay (day, venue_name, count) VALUES (?, ?, ?)');
