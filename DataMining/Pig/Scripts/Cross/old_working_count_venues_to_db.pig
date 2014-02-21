@@ -16,7 +16,9 @@ regexes = FOREACH crossed GENERATE *, CONCAT('.*', CONCAT(venuesReduced::Name, '
 --Keep tweet-venue pairs where the tweet contains the venue name
 venueMentions = FILTER regexes BY Text MATCHES regex;
 
-venueCounts = FOREACH (GROUP venueMentions BY venuesReduced::Name) GENERATE group, COUNT($1) as counter;
+venueCounts = FOREACH (GROUP venueMentions BY (venuesReduced::Name, venuesReduced::Type)) GENERATE group, COUNT($1) as counter;
 
-DUMP venueCounts;
---STORE venueCounts INTO 'VenueCategoryCount' USING org.apache.pig.piggybank.storage.DBStorage('com.mysql.jdbc.Driver','jdbc:mysql://storo:3306/teamn', 'teamn', '8553mkpw','INSERT INTO VenueData (Name, Hits, Category) VALUES (?, ?, ?)');
+flattenVenues = foreach venueCounts generate flatten(group), counter;
+
+--DUMP venueCounts;
+STORE flattenVenues INTO 'VenueCategoryCount' USING org.apache.pig.piggybank.storage.DBStorage('com.mysql.jdbc.Driver','jdbc:mysql://storo:3306/teamn', 'teamn', '8553mkpw','INSERT INTO VenueCategoryCount (Name, Category, Hits) VALUES (?, ?, ?)');
