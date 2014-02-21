@@ -1,7 +1,7 @@
-CREATE TABLE VenueDay (
+CREATE TABLE VenueCelebrityCount (
      id INT NOT NULL AUTO_INCREMENT,
-     venue_name NVARCHAR(150),
-	 day NVARCHAR(4),
-	 count NVARCHAR(20),
+     Name NVARCHAR(150),
+	 Hits NVARCHAR(4),
+	 Category NVARCHAR(50),
      PRIMARY KEY (id)
 )
