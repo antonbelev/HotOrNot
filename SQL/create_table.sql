@@ -33,3 +33,10 @@ CREATE TABLE VenueDayCat (
 	 Category NVARCHAR(50),
      PRIMARY KEY (id)
 );
+
+CREATE TABLE VenueType (
+     id INT NOT NULL AUTO_INCREMENT,
+     Name NVARCHAR(150),
+	 Category NVARCHAR(50),
+     PRIMARY KEY (id)
+);
