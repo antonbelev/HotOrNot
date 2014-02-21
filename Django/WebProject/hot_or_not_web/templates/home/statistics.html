@@ -7,6 +7,8 @@
 	<script src="{% static "js/google-charts.js" %}"></script>
 	<script>
 		var json = {{ json|safe }};
+		var years = {{ years|safe }}
+		var venues =  {{ venues|safe }}
 	</script>
 
 {% endblock %}
