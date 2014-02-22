@@ -4,10 +4,15 @@
 
 {% block page_scripts %}
 	
-	<script src="{% static "js/google-charts.js" %}"></script>
+	
 	<script>
 		var json = {{ json|safe }};
+		alert("Hello! I am an alert box!!");
+		alert(json);
+		var years = {{ years|safe }};
+		var venues = {{ venues|safe }};
 	</script>
+	<script src="{% static "js/google-charts.js" %}"></script>
 
 {% endblock %}
 

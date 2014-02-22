@@ -15,11 +15,12 @@
 	  };
 	  var chartChoice = chartEnum.BAR;
 	  var invertedAttributes = [];
-	  var isNormalized = false;		
-	  var selectedVenues = ["o2 Academy", "University of Glasgow", "Firhill Stadium"];
+	  var isNormalized = false;	
+	  //var venues = ["o2 Academy", "University of Glasgow", "Firhill Stadium"];
+	  var selectedVenues = venues;
 	  var countVenues = 0;
-	  var years = ["2009", "2010", "2011"];
-	  var venues = ["o2 Academy", "University of Glasgow", "Firhill Stadium"];
+	  //var years = ["2009", "2010", "2011"];
+	  
 	  
 	  google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
