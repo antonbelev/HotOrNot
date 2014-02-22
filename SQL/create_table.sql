@@ -40,3 +40,23 @@ CREATE TABLE VenueType (
 	 Category NVARCHAR(50),
      PRIMARY KEY (id)
 );
+
+
+CREATE TABLE DayOfWeekHits (
+     name NVARCHAR(150),
+     type NVARCHAR(50),
+     weekday NVARCHAR(20),
+     hits NVARCHAR(20),
+     PRIMARY KEY (name, type, weekday)
+);
+
+
+CREATE TABLE VenueHits (
+     name NVARCHAR(150),
+     type NVARCHAR(50),
+     total_hits NVARCHAR(20),
+     celebrity_hits NVARCHAR(20),
+     PRIMARY KEY (name, type)
+);
+
+
