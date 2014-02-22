@@ -21,4 +21,4 @@ venueCounts = FOREACH (GROUP venueMentions BY (venuesReduced::Name, venuesReduce
 flattenVenues = foreach venueCounts generate flatten(group), counter;
 
 --DUMP venueCounts;
-STORE flattenVenues INTO 'VenueHits' USING org.apache.pig.piggybank.storage.DBStorage('com.mysql.jdbc.Driver','jdbc:mysql://storo:3306/teamn', 'teamn', '8553mkpw','INSERT INTO VenueHits (name, type, total_hits, celebrity_hits) VALUES (?, ?, ?, '0')');
+STORE flattenVenues INTO 'VenueHits' USING org.apache.pig.piggybank.storage.DBStorage('com.mysql.jdbc.Driver','jdbc:mysql://storo:3306/teamn', 'teamn', '8553mkpw','INSERT IGNORE INTO VenueHits (name, type, total_hits) VALUES (?, ?, ?)');

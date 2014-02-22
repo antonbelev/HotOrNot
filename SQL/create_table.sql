@@ -46,7 +46,7 @@ CREATE TABLE DayOfWeekHits (
      name NVARCHAR(150),
      type NVARCHAR(50),
      weekday NVARCHAR(20),
-     hits NVARCHAR(20),
+     hits int default 0,
      PRIMARY KEY (name, type, weekday)
 );
 
@@ -54,8 +54,8 @@ CREATE TABLE DayOfWeekHits (
 CREATE TABLE VenueHits (
      name NVARCHAR(150),
      type NVARCHAR(50),
-     total_hits NVARCHAR(20),
-     celebrity_hits NVARCHAR(20),
+     total_hits int default 0,
+     celebrity_hits int default 0,
      PRIMARY KEY (name, type)
 );
 
