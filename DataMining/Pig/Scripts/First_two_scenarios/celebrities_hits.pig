@@ -19,6 +19,7 @@ venueMentions = FILTER regexes BY Text MATCHES regex;
 
 venueCounts = FOREACH (GROUP venueMentions BY (venuesReduced::Name, venuesReduced::Type)) GENERATE group, COUNT($1) as counter;
 
-flattenVenues = foreach venueCounts generate flatten(group), counter;
+flattenVenues = foreach venueCounts generate counter, flatten(group);
 
-STORE flattenVenues INTO 'VenueCelebrityCount' USING org.apache.pig.piggybank.storage.DBStorage('com.mysql.jdbc.Driver','jdbc:mysql://storo:3306/teamn', 'teamn', '8553mkpw','INSERT INTO VenueCelebrityCount (Name, Category, Hits) VALUES (?, ?, ?)');
+--DESCRIBE flattenVenues;
+STORE flattenVenues INTO 'VenueHits' USING org.apache.pig.piggybank.storage.DBStorage('com.mysql.jdbc.Driver','jdbc:mysql://storo:3306/teamn', 'teamn', '8553mkpw','UPDATE VenueHits SET celebrity_hits = ? WHERE name = ? AND type = ?');

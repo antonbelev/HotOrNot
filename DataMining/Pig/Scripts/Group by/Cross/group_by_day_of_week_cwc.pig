@@ -20,4 +20,5 @@ venueCounts = FOREACH (GROUP venueMentions BY (venuesReduced::Name, venuesReduce
 
 flattenVenues = foreach venueCounts generate flatten(group), counter;
 
+--Describe flattenVenues;
 STORE flattenVenues INTO 'VenueWeekDayCat' USING org.apache.pig.piggybank.storage.DBStorage('com.mysql.jdbc.Driver','jdbc:mysql://storo:3306/teamn', 'teamn', '8553mkpw','INSERT INTO VenueWeekDayCat (Name, Category, WeekDay, Hits) VALUES (?, ?, ?, ?)');
