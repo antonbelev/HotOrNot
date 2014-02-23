@@ -1,0 +1,18 @@
+<div data-role="collapsible" class="menuCollapse clpsCategories" data-collapsed="false" data-theme="b">
+<h3>
+    Categories</h3>                
+    <div>
+        <ul data-role="listview" data-filter="true" class="ulVenues" data-mini="true">            	
+        	{% if categories %}
+                {% for cat in categories %}
+                <li>
+            		<input type="checkbox" class="chckCat"  name="cat{{cat}}" id="cat{{cat}}" checked="checked"/>
+    				<label for="cat{{cat}}">{{cat}}</label>                	
+            	</li> 	                
+                {% endfor %}
+            {% else %}
+                <strong>No categories to be displayed.</strong>
+            {% endif %}
+        </ul>
+	</div>        	
+</div>

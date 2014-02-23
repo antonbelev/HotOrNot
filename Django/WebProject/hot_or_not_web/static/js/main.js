@@ -4,7 +4,9 @@ $(document).on("pageinit", function (event) {
 		selectedVenues.push(venues[i]);
 	}
 	drawChart();*/
-
+	
+	/*
+	
 	 $("input[type='checkbox']").on("change", function (event, ui) {
         if ($(this).hasClass("chckVenue")) {
             if ($(this).prop('checked')) {
@@ -21,7 +23,5 @@ $(document).on("pageinit", function (event) {
             }
             drawChart();
         }		
-    });
-	
-
+    }); */
 });

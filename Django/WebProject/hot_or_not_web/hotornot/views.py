@@ -2,21 +2,56 @@
 import json
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from models import Dayofweekhits, Venuehits
+from sets import Set
 
 def base(request):
     context = RequestContext(request)
     context_dict = {}
     
     #read venues from db here
-    venues = ['o2 Academy', 'Firhill Stadium', 'University of Glasgow']
-    years = ["2009", "2010", "2011"];
+#    venues = ['o2 Academy', 'Firhill Stadium', 'University of Glasgow']
+#    years = ["2009", "2010", "2011"];
     
-    jsonData = { "2009" : {"o2 Academy" : 2534, "University of Glasgow" : 3244, "Firhill Stadium" : 3425},
-    "2010" : {"o2 Academy" : 4524, "University of Glasgow" : 4566, "Firhill Stadium" : 7674},
-    "2011" : {"o2 Academy" : 1234, "University of Glasgow" : 4534, "Firhill Stadium" : 6343}
-    }
+#    jsonData = {
+#           "o2 Academy, club" : {
+#                "Mon" : 105, "Tue" : 123, "Wed" : 234, "Thu" : 23, "Fri" : 325, "Sat" : 114, "Sun": 156
+#            },
+#           "University of Glasgow, university" : {
+#                "Mon" : 566, "Tue" : 65, "Wed" : 45, "Thu" : 27, "Fri" : 52, "Sat" : 65, "Sun": 123
+#            },
+#            "Firhill Stadium, stadium" : {
+#                "Mon" : 637, "Tue" : 234, "Wed" : 262, "Thu" : 266, "Fri" : 677, "Sat" : 45, "Sun": 657
+#            }
+#    }
     
-    context_dict['years'] = years
+    jsonData = {}
+    venues = []
+    categoriesSet = Set()
+        
+    for v in Dayofweekhits.objects.all():
+        vDic = {}
+        name_type = v.name + ',' + v.type
+        vDic[v.weekday] = v.hits
+        jsonData[name_type] = vDic  
+    
+    for v in Venuehits.objects.all():
+        vDic = {}
+        name_type = v.name + ',' + v.type
+        if name_type in jsonData:
+            jsonData[name_type]['total_hits'] = v.total_hits
+            jsonData[name_type]['celebrity_hits'] = v.celebrity_hits
+        else:
+            vDic['total_hits'] = v.total_hits
+            vDic['celebrity_hits'] = v.celebrity_hits
+            jsonData[name_type] = vDic
+        
+        venues.append(v)
+        categoriesSet.add(v.type);
+        
+    categoriesSet.remove('')  
+         
+    context_dict['categories'] = categoriesSet
     context_dict['venues'] = venues  
     context_dict['json'] = json.dumps(jsonData)     
     

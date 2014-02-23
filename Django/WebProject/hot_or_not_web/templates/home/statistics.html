@@ -4,12 +4,11 @@
 
 {% block page_scripts %}
 	
-	<script src="{% static "js/google-charts.js" %}"></script>
+	
 	<script>
-		var json = {{ json|safe }};
-		var years = {{ years|safe }}
-		var venues =  {{ venues|safe }}
+		var jsonData = {{ json|safe }};
 	</script>
+	<script src="{% static "js/google-charts.js" %}"></script>
 
 {% endblock %}
 
@@ -22,13 +21,17 @@
 		</div>
 		<div class="leftBottomMenu"> 
 			<div class="leftBottomMenuInner"> 
-				{% include "home/chartMenu.html" %}
+				{% include "home/chart.html" %}
 			</div>
 		</div>
    </div>
    <div class="right-panel">
-       <div id="divVenueMenu" class="venuePanel">
-			{% include "home/venueMenu.html" %}    	
+		<div id="divCatMenu" class="venuePanel">
+			{% include "home/categories.html" %} 
+	  	 </div>  
+		 <div id="divVenueMenu" class="venuePanel">
+			{% include "home/venues.html" %} 
+		  </div>   	
    </div>
    
  </div> 
