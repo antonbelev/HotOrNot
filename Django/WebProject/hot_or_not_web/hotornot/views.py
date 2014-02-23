@@ -1,4 +1,4 @@
-# Create your views here.
+## Create your views here.
 import json
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -28,14 +28,26 @@ def base(request):
     jsonData = {}
     venues = []
     categoriesSet = Set()
+#    counter = 0
         
     for v in Dayofweekhits.objects.all():
+#        if counter >= 3:
+#            break
+        if v.name == '':
+            continue
+#        counter += 1
         vDic = {}
         name_type = v.name + ',' + v.type
         vDic[v.weekday] = v.hits
         jsonData[name_type] = vDic  
     
+#    counter = 0
     for v in Venuehits.objects.all():
+#        if counter >= 3:
+#            break
+        if v.name == '':
+            continue
+#        counter += 1
         vDic = {}
         name_type = v.name + ',' + v.type
         if name_type in jsonData:
@@ -48,8 +60,9 @@ def base(request):
         
         venues.append(v)
         categoriesSet.add(v.type);
-        
-    categoriesSet.remove('')  
+    
+    if '' in categoriesSet:   
+        categoriesSet.remove('')  
          
     context_dict['categories'] = categoriesSet
     context_dict['venues'] = venues  

@@ -7,6 +7,11 @@
 	
 	<script>
 		var jsonData = {{ json|safe }};
+		var selectedVenues = [];
+		/*for (var venue_type in jsonData){
+			selectedVenues.push(venue_type); // add venue names as columns
+		}*/
+		
 	</script>
 	<script src="{% static "js/google-charts.js" %}"></script>
 

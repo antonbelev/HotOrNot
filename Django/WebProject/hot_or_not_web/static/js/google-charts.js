@@ -19,6 +19,7 @@
 		TIME_FRAME : 1,
 	  };
 	  var daysOfTheWeek = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+	  
 	  var chartChoice;	 
 	  var statisticsTypeChoice = statisticsType.TOTAL_HITS;
 	  google.load("visualization", "1", {packages:["corechart"]});
@@ -30,16 +31,19 @@
 				
 		switch(statisticsTypeChoice) {
 			case(statisticsType.TIME_FRAME): 
-				data.addColumn('string', 'Day of the week');		
+				data.addColumn('string', 'Day of the week');
+							
 				for (var venue_type in jsonData){
-					data.addColumn('number', venue_type.split(',')[0]); // add venue names as columns
+					if (selectedVenues.indexOf(venue_type) > -1)	
+						data.addColumn('number', venue_type.split(',')[0]); // add venue names as columns
 				}				
 				for (var day in daysOfTheWeek){		
 					var content = [];
 					content.push(daysOfTheWeek[day]);
 					
-					for (var venue_type in jsonData) { 
-						content.push(jsonData[venue_type][daysOfTheWeek[day]]);						
+					for (var venue_type in jsonData) {
+						if (selectedVenues.indexOf(venue_type) > -1)					
+							content.push(jsonData[venue_type][daysOfTheWeek[day]]);						
 					}
 					data.addRow(content);				
 				}
@@ -52,11 +56,13 @@
 				data.addColumn('number', 'Celebrity hits');
 				
 				for (var venue_type in jsonData) {
-					var content = [];
-					content.push(venue_type.split(',')[0]);
-					content.push(jsonData[venue_type]['total_hits']);
-					content.push(jsonData[venue_type]['celebrity_hits']);			
-					data.addRow(content);			
+					if (selectedVenues.indexOf(venue_type) > -1){
+						var content = [];
+						content.push(venue_type.split(',')[0]);
+						content.push(jsonData[venue_type]['total_hits']);
+						content.push(jsonData[venue_type]['celebrity_hits']);			
+						data.addRow(content);
+					}								
 				}
 				
 				chartChoice = chartEnum.COLUMN;	 
