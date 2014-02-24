@@ -14,13 +14,13 @@ def base(request):
 #    years = ["2009", "2010", "2011"];
     
 #    jsonData = {
-#           "o2 Academy, club" : {
+#           "o2 Academy,club" : {
 #                "Mon" : 105, "Tue" : 123, "Wed" : 234, "Thu" : 23, "Fri" : 325, "Sat" : 114, "Sun": 156
 #            },
-#           "University of Glasgow, university" : {
+#           "University of Glasgow,university" : {
 #                "Mon" : 566, "Tue" : 65, "Wed" : 45, "Thu" : 27, "Fri" : 52, "Sat" : 65, "Sun": 123
 #            },
-#            "Firhill Stadium, stadium" : {
+#            "Firhill Stadium,stadium" : {
 #                "Mon" : 637, "Tue" : 234, "Wed" : 262, "Thu" : 266, "Fri" : 677, "Sat" : 45, "Sun": 657
 #            }
 #    }
@@ -29,7 +29,9 @@ def base(request):
     venues = []
     categoriesSet = Set()
 #    counter = 0
-        
+    
+    print Dayofweekhits.objects.all().order_by('hits')[:5]
+    
     for v in Dayofweekhits.objects.all():
 #        if counter >= 3:
 #            break

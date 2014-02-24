@@ -34,7 +34,7 @@ DATABASES = {
         'NAME': 'teamn',   
         'USER': 'teamn',                    
         'PASSWORD': '8553mkpw',
-        'HOST': '127.0.0.1', #storo        
+        'HOST': 'localhost', #storo 127.0.0.1       
         'PORT': '3307',
     }
 }

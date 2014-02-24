@@ -10,8 +10,6 @@
       chartEnum = {
 		LINE : 0,
 		COLUMN : 1,
-		SCATTER : 2,
-		GEO : 3
 	  };
 	  
 	  statisticsType = {
@@ -21,7 +19,7 @@
 	  var daysOfTheWeek = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 	  
 	  var chartChoice;	 
-	  var statisticsTypeChoice = statisticsType.TOTAL_HITS;
+	  var statisticsTypeChoice; //= statisticsType.TOTAL_HITS;
 	  google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);      
 	  
@@ -47,7 +45,7 @@
 					}
 					data.addRow(content);				
 				}
-				chartChoice = chartEnum.LINE;	 
+				//chartChoice = chartEnum.LINE;	 
 				break;
 				
 			case(statisticsType.TOTAL_HITS):
@@ -65,7 +63,7 @@
 					}								
 				}
 				
-				chartChoice = chartEnum.COLUMN;	 
+				//chartChoice = chartEnum.COLUMN;	 
 				break;
 		}
 		
