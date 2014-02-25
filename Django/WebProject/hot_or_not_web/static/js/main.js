@@ -24,11 +24,8 @@ $(document).on("pageinit", function (event) {
                 selectedVenues = newlist;
             }
             drawChart();
-        }		
-    });
-	
-	$("input[type='checkbox']").on("change", function (event, ui) {
-        if ($(this).hasClass("chckCat")) {
+        }
+		else if ($(this).hasClass("chckCat")) {
             if ($(this).prop('checked')) {
 				var cat = $(this).prop("name").substring(3) //name is catvenuetype excape cat				
 				$("input.chckVenue[type='checkbox']").each(function () {
@@ -53,7 +50,47 @@ $(document).on("pageinit", function (event) {
                 });
             }
             drawChart();
-        }		
+        }
+		else if ($(this).hasClass("selectAllVenues")) {
+            if ($(this).prop('checked')) {
+                $("input.chckVenue[type='checkbox']").each(function () {
+                    $(this).prop('checked', true).checkboxradio().checkboxradio('refresh');
+					selectedVenues.push($(this).prop("name").substring(2));
+                });
+                drawChart();
+            } else {
+                var newlist = [];
+                $("input.chckVenue[type='checkbox']").each(function () {
+                    $(this).prop('checked', false).checkboxradio().checkboxradio('refresh');
+                });
+                selectedVenues = newlist;
+                drawChart();
+            }
+        }
+        else if ($(this).hasClass("selectAllCategories")) {
+            if ($(this).prop('checked')) {
+                $("input.chckCat[type='checkbox']").each(function () {
+                    $(this).prop('checked', true).checkboxradio().checkboxradio('refresh');
+                    var cat = $(this).prop("name").substring(3) //name is catvenuetype excape cat				
+					$("input.chckVenue[type='checkbox']").each(function () {
+						if (cat == $(this).prop("name").toString().split(',')[1]) {
+							//console.log("checkbox - " + $(this).prop("name").toString().split(',')[1])
+							$(this).prop('checked', true).checkboxradio().checkboxradio('refresh');
+							if (selectedVenues.indexOf($(this).prop("name").substring(2)) == -1)
+								selectedVenues.push($(this).prop("name").substring(2));
+						}                    
+					});
+                });
+                drawChart();
+            } else {
+                var newlist = [];
+                $("input.chckCat[type='checkbox']").each(function () {
+                    $(this).prop('checked', false).checkboxradio().checkboxradio('refresh');
+                });
+                selectedVenues = newlist;
+                drawChart();
+            }
+        }
     });
 	
 	$("input[type='radio']").bind("change", function (event, ui) {
@@ -74,5 +111,8 @@ $(document).on("pageinit", function (event) {
         }
         drawChart();
     });
+	
+	
+	
 	
 });

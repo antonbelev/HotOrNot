@@ -2,6 +2,10 @@
 <h3>
     Venues</h3>                
     <div>
+    	<input type="checkbox" name="selectAllVenues" id="selectAllVenues" class="selectAllVenues" />
+	    <label for="selectAllVenues">Select all</label>
+    	<hr />
+	    <div class"clear"></div>    
         <ul data-role="listview" data-filter="true" class="ulVenues" data-mini="true">            	
         	{% if venues %}
                 {% for venue in venues %}
