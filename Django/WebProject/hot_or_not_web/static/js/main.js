@@ -1,10 +1,5 @@
 $(document).on("pageinit", function (event) {
 	
-	/*for (var i = 0; i < venues.lenght; i++) {
-		selectedVenues.push(venues[i]);
-	}
-	drawChart();*/
-	
 	selectedVenues = []
 	chartChoice = chartEnum.LINE;
 	statisticsTypeChoice = statisticsType.TOTAL_HITS;
@@ -110,9 +105,6 @@ $(document).on("pageinit", function (event) {
                 break;
         }
         drawChart();
-    });
-	
-	
-	
+    });	
 	
 });

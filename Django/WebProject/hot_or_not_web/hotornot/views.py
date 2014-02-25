@@ -7,12 +7,7 @@ from sets import Set
 
 def base(request):
     context = RequestContext(request)
-    context_dict = {}
-    
-    #read venues from db here
-#    venues = ['o2 Academy', 'Firhill Stadium', 'University of Glasgow']
-#    years = ["2009", "2010", "2011"];
-    
+ 
 #    jsonData = {
 #           "o2 Academy,club" : {
 #                "Mon" : 105, "Tue" : 123, "Wed" : 234, "Thu" : 23, "Fri" : 325, "Sat" : 114, "Sun": 156
@@ -25,31 +20,49 @@ def base(request):
 #            }
 #    }
     
+         
+    
+    return render_to_response('home/statistics.html', get_data(''), context)
+
+def about(request):
+    context = RequestContext(request)
+    
+    
+    return render_to_response('home/about.html', {}, context)
+
+def top_five(request):
+    context = RequestContext(request)
+    category = request.GET.get('cat', '');
+    
+    return render_to_response('home/top5.html', get_data(category), context)
+
+
+def get_data(category):
+    #returns context dic [jsonData, venues, categories], where jsonData is complex data structure and venues is list of venue names
+    context_dict = {}
     jsonData = {}
     venues = []
     categoriesSet = Set()
-#    counter = 0
     
-    print Dayofweekhits.objects.all().order_by('hits')[:5]
-    
-    for v in Dayofweekhits.objects.all():
-#        if counter >= 3:
-#            break
+    if category == '':
+        DayofweekhitsObjects = Dayofweekhits.objects.all()
+        VenuehitsObjects = Venuehits.objects.all()
+    else:
+        DayofweekhitsObjects = Dayofweekhits.objects.all().filter(type = category).order_by('-hits')[:5]         
+        VenuehitsObjects = Venuehits.objects.all().filter(type = category).order_by('-total_hits', '-celebrity_hits')[:5]
+        print DayofweekhitsObjects, '\n', VenuehitsObjects
+ 
+    for v in DayofweekhitsObjects:
         if v.name == '':
             continue
-#        counter += 1
         vDic = {}
         name_type = v.name + ',' + v.type
         vDic[v.weekday] = v.hits
         jsonData[name_type] = vDic  
     
-#    counter = 0
-    for v in Venuehits.objects.all():
-#        if counter >= 3:
-#            break
+    for v in VenuehitsObjects:
         if v.name == '':
             continue
-#        counter += 1
         vDic = {}
         name_type = v.name + ',' + v.type
         if name_type in jsonData:
@@ -68,15 +81,12 @@ def base(request):
          
     context_dict['categories'] = categoriesSet
     context_dict['venues'] = venues  
-    context_dict['json'] = json.dumps(jsonData)     
+    context_dict['json'] = json.dumps(jsonData)
     
-    return render_to_response('home/statistics.html', context_dict, context)
-
-def about(request):
-    context = RequestContext(request)
+    return context_dict
     
     
-    return render_to_response('home/about.html', {}, context)
+    
     
     
     

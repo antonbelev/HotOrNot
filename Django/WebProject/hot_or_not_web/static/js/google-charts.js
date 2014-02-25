@@ -1,12 +1,3 @@
-		// Load the Visualization API and the piechart package.
-      google.load('visualization', '1.0', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
       chartEnum = {
 		LINE : 0,
 		COLUMN : 1,
@@ -18,9 +9,10 @@
 	  };
 	  var daysOfTheWeek = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 	  
-	  var chartChoice;	 
+	  var chartChoice;
 	  var statisticsTypeChoice; //= statisticsType.TOTAL_HITS;
 	  google.load("visualization", "1", {packages:["corechart"]});
+	  //google.load("visualization", "1", {"packages": ["corechart"], "callback": drawChart});
       google.setOnLoadCallback(drawChart);      
 	  
 	  function drawChart() {		
@@ -85,9 +77,6 @@
 				break;
 			case(chartEnum.COLUMN): 
 				chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-				break;
-			case(chartEnum.GEO):
-				chart = new google.visualization.GeoMap(document.getElementById('chart_div'));
 				break;
 		}
 		chart.draw(data, options);

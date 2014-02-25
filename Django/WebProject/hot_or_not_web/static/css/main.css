@@ -169,3 +169,35 @@ li.ui-li{
 	width: 100% !important;
 }
 */
+
+/*
+table.tblCatli tbody{
+	width: 100%;
+
+}
+
+table.tblCatli tr {
+	width: 100%;
+	display: block;
+}
+
+table.tblCatli tr td.tdCatChck {
+	width: 75%;
+	float: left;
+}
+
+table.tblCatli tr td.tdTop5 {
+	width: 20%;
+	float: right;
+} */
+
+
+table.tblCatli tr td.tdCatChck {
+	width: 250px !important;
+	margin-right: 15px !important;
+}
+
+table.tblCatli tr td.tdTop5 {
+	width: 75px !important;
+	margin-left: 15px !important;
+}

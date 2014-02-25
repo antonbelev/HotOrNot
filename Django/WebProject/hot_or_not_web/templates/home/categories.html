@@ -10,8 +10,17 @@
         	{% if categories %}
                 {% for cat in categories %}
                 <li>
-            		<input type="checkbox" class="chckCat" name="cat{{cat}}" id="cat{{cat}}"/>
-    				<label for="cat{{cat}}">{{cat}}</label>                	
+                	<table class="tblCatli">
+                		<tr>
+                			<td class="tdCatChck">
+                				<input type="checkbox" class="chckCat" name="cat{{cat}}" id="cat{{cat}}"/>
+    							<label for="cat{{cat}}">{{cat}}</label>
+                			</td>
+                			<td class="tdTop5">
+                				<a href="/hotornot/top5?cat={{cat}}">View Top 5</a>
+                			</td>
+                		</tr>
+                	</table>             	
             	</li> 	                
                 {% endfor %}
             {% else %}

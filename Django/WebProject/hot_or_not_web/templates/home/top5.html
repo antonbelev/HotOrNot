@@ -1,0 +1,34 @@
+
+{% extends 'home/base.html' %}
+
+{% load static %}
+{% block page_scripts %}
+
+	
+	<script>
+		var jsonData = {{ json|safe }};
+		var selectedVenues = [];
+		for (var venue_type in jsonData){
+			selectedVenues.push(venue_type);
+		}
+		
+	</script>
+	
+	<script src="{% static "js/top5.js" %}"></script>
+
+{% endblock %}
+{% block body_block %}
+
+<div class="left-panel">
+   <div id="divChart" class="divChart">
+    	<div id="chart_div" class="divInnderChar">
+    	</div> 
+	</div>  
+ </div>
+ <div class="right-panel">
+	<div class="leftBottomMenuInner"> 
+		{% include "home/chart.html" %}
+	</div>
+</div>	
+ 
+{% endblock %}
