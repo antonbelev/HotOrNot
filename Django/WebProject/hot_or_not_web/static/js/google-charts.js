@@ -11,9 +11,9 @@
 	  
 	  var chartChoice;
 	  var statisticsTypeChoice; //= statisticsType.TOTAL_HITS;
-	  google.load("visualization", "1", {packages:["corechart"]});
-	  //google.load("visualization", "1", {"packages": ["corechart"], "callback": drawChart});
-      google.setOnLoadCallback(drawChart);      
+	  google.load('visualization', '1.0', {'packages':['corechart']});
+	  google.setOnLoadCallback(drawChart);
+    
 	  
 	  function drawChart() {		
 		// Create the data table.
