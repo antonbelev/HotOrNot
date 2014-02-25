@@ -2,7 +2,7 @@ $(document).on("pageinit", function (event) {
 	
 	selectedVenues = []
 	chartChoice = chartEnum.LINE;
-	statisticsTypeChoice = statisticsType.TOTAL_HITS;
+	statisticsTypeChoice = statisticsType.TOTAL_HITS;	
 	
 	 $("input[type='checkbox']").on("change", function (event, ui) {
         if ($(this).hasClass("chckVenue")) {

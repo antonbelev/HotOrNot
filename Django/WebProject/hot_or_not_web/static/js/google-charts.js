@@ -12,12 +12,11 @@
 	  var chartChoice;
 	  var statisticsTypeChoice; //= statisticsType.TOTAL_HITS;
 	  google.load('visualization', '1.0', {'packages':['corechart']});
-	  google.setOnLoadCallback(drawChart);
-    
+	  google.setOnLoadCallback(drawChart);   
 	  
 	  function drawChart() {		
 		// Create the data table.
-		var data = new google.visualization.DataTable();
+		var data = new google.visualization.DataTable();	
 				
 		switch(statisticsTypeChoice) {
 			case(statisticsType.TIME_FRAME): 

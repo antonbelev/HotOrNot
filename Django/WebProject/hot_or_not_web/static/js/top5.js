@@ -2,7 +2,7 @@ $(document).on("pageinit", function (event) {
 	
 	chartChoice = chartEnum.LINE;
 	statisticsTypeChoice = statisticsType.TOTAL_HITS;
-	
+		
 	$("input[type='radio']").bind("change", function (event, ui) {
 		console.log("value - " + $(this).prop('value'));
         switch ($(this).prop('value')) {
