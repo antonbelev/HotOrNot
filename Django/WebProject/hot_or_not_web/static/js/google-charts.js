@@ -1,61 +1,66 @@
-		// Load the Visualization API and the piechart package.
-      google.load('visualization', '1.0', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
       chartEnum = {
 		LINE : 0,
-		BAR : 1,
-		SCATTER : 2,
-		GEO : 3
+		COLUMN : 1,
 	  };
-	  var chartChoice = chartEnum.BAR;
-	  var invertedAttributes = [];
-	  var isNormalized = false;		
-	  var selectedVenues = ["o2 Academy", "University of Glasgow", "Firhill Stadium"];
-	  var countVenues = 0;
-	  //var years = ["2009", "2010", "2011"];
-	  //var venues = ["o2 Academy", "University of Glasgow", "Firhill Stadium"];
 	  
-	  google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      
+	  statisticsType = {
+		TOTAL_HITS : 0,
+		TIME_FRAME : 1,
+	  };
+	  var daysOfTheWeek = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 	  
-	  function drawChart() {
-        /*var data = google.visualization.arrayToDataTable([
-          ['Year', 'o2 Academy', 'University of Glasgow', 'Firhill Stadium'],
-          ['2004',  125, 234, 400],
-          ['2005',  1170, 4554, 460],
-          ['2006',  4545, 3458, 1120],
-          ['2007',  2343, 1345, 540]
-        ]);*/
-		
+	  var chartChoice;
+	  var statisticsTypeChoice; //= statisticsType.TOTAL_HITS;
+	  google.load('visualization', '1.0', {'packages':['corechart']});
+	  google.setOnLoadCallback(drawChart);   
+	  
+	  function drawChart() {		
 		// Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Year');
-
-        for (var i = 0; i < venues.length; i++) {
-			if (selectedVenues.indexOf(venues[i]) > -1)
-				data.addColumn('number', venues[i]);
-		}
-		
-		for (var i = 0; i < years.length; i++) {
-                var content = [];
-				content.push(years[i]);
-				var year = years[i];
+		var data = new google.visualization.DataTable();	
 				
-				for (var j = 0; j < venues.length; j++) {
-					if (selectedVenues.indexOf(venues[j]) > -1)
-						content.push(json[year][venues[j]]);
+		switch(statisticsTypeChoice) {
+			case(statisticsType.TIME_FRAME): 
+				data.addColumn('string', 'Day of the week');
+							
+				for (var venue_type in jsonData){
+					if (selectedVenues.indexOf(venue_type) > -1)	
+						data.addColumn('number', venue_type.split(',')[0]); // add venue names as columns
+				}				
+				for (var day in daysOfTheWeek){		
+					var content = [];
+					content.push(daysOfTheWeek[day]);
+					
+					for (var venue_type in jsonData) {
+						if (selectedVenues.indexOf(venue_type) > -1)					
+							content.push(jsonData[venue_type][daysOfTheWeek[day]]);						
+					}
+					data.addRow(content);				
+				}
+				//chartChoice = chartEnum.LINE;	 
+				break;
+				
+			case(statisticsType.TOTAL_HITS):
+				data.addColumn('string', 'Venue');
+				data.addColumn('number', 'Total hits');
+				data.addColumn('number', 'Celebrity hits');
+				
+				for (var venue_type in jsonData) {
+					if (selectedVenues.indexOf(venue_type) > -1){
+						var content = [];
+						content.push(venue_type.split(',')[0]);
+						content.push(jsonData[venue_type]['total_hits']);
+						content.push(jsonData[venue_type]['celebrity_hits']);			
+						data.addRow(content);
+					}								
 				}
 				
-				data.addRow(content);			
+				//chartChoice = chartEnum.COLUMN;	 
+				break;
 		}
 		
+		
+				
+
 		var options = {
 			'title:' : 'Venue ranking over time',
             'height': 500,//$( document ).innerHeight() - 50,
@@ -69,11 +74,8 @@
 			case(chartEnum.LINE): 
 				chart = new google.visualization.LineChart(document.getElementById('chart_div'));
 				break;
-			case(chartEnum.BAR): 
+			case(chartEnum.COLUMN): 
 				chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-				break;
-			case(chartEnum.GEO):
-				chart = new google.visualization.GeoMap(document.getElementById('chart_div'));
 				break;
 		}
 		chart.draw(data, options);

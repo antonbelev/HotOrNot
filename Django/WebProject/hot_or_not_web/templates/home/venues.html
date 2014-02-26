@@ -1,0 +1,32 @@
+<div data-role="collapsible" class="menuCollapse clpsVenues" data-collapsed="false" data-theme="b">
+<h3>
+    Venues</h3>                
+    <div>
+    	<input type="checkbox" name="selectAllVenues" id="selectAllVenues" class="selectAllVenues" />
+	    <label for="selectAllVenues">Select all</label>
+    	<hr />
+	    <div class"clear"></div>    
+        <ul data-role="listview" data-filter="true" class="ulVenues" data-mini="true">            	
+        	{% if venues %}
+                {% for venue in venues %}
+                <li>   				
+    				<table class="tblVenueli">
+                		<tr>
+                			<td class="tdVenueChck">
+                				<input type="checkbox" class="chckVenue" name="vn{{venue.name}},{{venue.type}}" id="vn{{venue.name}},{{venue.type}}"/>
+    							<label for="vn{{venue.name}},{{venue.type}}">{{venue.name}}</label>
+                			</td>
+                			<td class="tdViewVenue">
+                				<a href="/hotornot/venue?name={{venue.name}}&type={{venue.type}}" class="ui-btn ui-corner-all ui-btn-inline">
+                				View venue</a>
+                			</td>
+                		</tr>
+                	</table>                 	
+            	</li> 	                
+                {% endfor %}
+            {% else %}
+                <strong>No venues to be displayed.</strong>
+            {% endif %}
+        </ul>
+	</div>        	
+</div>

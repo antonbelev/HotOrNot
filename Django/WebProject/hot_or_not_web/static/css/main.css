@@ -96,76 +96,17 @@ li.ui-li{
     padding: 0.01em 10px !important;
 }
 
-
-
-
-
-
-
-
-/*.leftPanel
-{
-	float: left;
-	width: 59%;
-	margin: 3px;
-    padding: 3px;
-    
+table.tblCatli tr td.tdCatChck, table.tblVenueli tr td.tdVenueChck {
+	width: 250px !important;
+	margin-right: 15px !important;
 }
-.rightPanel
-{
-    float: right;
-    width: 38.9%;
-    margin: 3px;
-    padding: 3px;
-    border-color: #C8C8E6;
-    border-width: 2.5px;
-    border-style: solid;
-    height: 100%;
-    border-radius: 12px;
+
+table.tblCatli tr td.tdTop5, table.tblVenueli tr td.tdViewVenue {
+	width: 75px !important;
+	margin-left: 15px !important;
 }
-.leftBottomMenu
-{
+
+.map-canvas {
 	width: 100%;
-	height: 100%;
-    border-color: #C8C8E6;
-    border-width: 2.5px;
-    border-style: solid;
-    border-radius: 12px;
-    margin-top: 3px;
+	height: 400px;
 }
-.divChart
-{
-    height: 100%;
-    border-color: #C8C8E6;
-    border-width: 2.5px;
-    border-style: solid;
-    border-radius: 12px;   
-}
-
-.divInnderChart div
-{
-    height: 100%;
-}
-
-.divInnderError
-{
-    border-color: #C8C8E6;
-    display:table; 
-}
-
-.error 
-{
-    color: Red;
-    display:table-cell;
-    text-align: center;
-    vertical-align:middle;
-    width:400px;
-    height: 100%;
-    
-    
-}
-
-.chartTypes .ui-controlgroup-controls {
-	width: 100% !important;
-}
-*/
