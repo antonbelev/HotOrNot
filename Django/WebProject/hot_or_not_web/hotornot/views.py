@@ -36,6 +36,16 @@ def top_five(request):
     
     return render_to_response('home/top5.html', get_data(category), context)
 
+def venue(request):
+    context = RequestContext(request)
+    name = request.GET.get('name', '');
+    category = request.GET.get('type', '');
+    context_dict = {}
+    context_dict['venueName'] = name
+    context_dict['venueType'] = category
+    
+    return render_to_response('home/venue_page.html', context_dict, context)
+
 
 def get_data(category):
     #returns context dic [jsonData, venues, categories], where jsonData is complex data structure and venues is list of venue names

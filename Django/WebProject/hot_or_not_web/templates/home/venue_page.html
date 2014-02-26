@@ -1,0 +1,28 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+{% block page_scripts %}
+
+	<script type="text/javascript" 
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmN4-d5vpWUKKXAPxLxeUfaYgK5R05LAc&sensor=false">
+    </script>
+    <script src="{% static "js/venue_page.js" %}"></script>
+    <script src="{% static "js/google-maps.js" %}"></script>
+    
+{% endblock %}
+{% block body_block %}
+
+<div class="left-panel">
+	<div id="map-canvas" class="map-canvas">
+	
+	</div>
+ </div>
+ <div class="right-panel">
+	<p>Venue information:</p>
+	</br>
+	<p>Name: {{venueName}}</p>
+	</br>
+	<p>Type: {{venueType}}</p>
+</div>	
+ 
+{% endblock %}

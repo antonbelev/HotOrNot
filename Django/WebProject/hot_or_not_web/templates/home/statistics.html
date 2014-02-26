@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block page_scripts %}
-	
+	<script src="{% static "js/google-charts.js" %}"></script>
 	<script src="{% static "js/main.js" %}"></script>
 	<script>
 		var jsonData = {{ json|safe }};
