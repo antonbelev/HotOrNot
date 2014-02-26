@@ -77,3 +77,14 @@ CREATE TABLE VenueHits2 (
 );
 
 
+CREATE TABLE VenueCompleteInformation (
+     name NVARCHAR(150),
+     type NVARCHAR(50),
+	 latitude double default 0,
+	 longitude double default 0,
+     city NVARCHAR(50),
+	 country NVARCHAR(50),
+     PRIMARY KEY (name, type)
+);
+
+
