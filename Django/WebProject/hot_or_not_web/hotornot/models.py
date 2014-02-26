@@ -16,7 +16,25 @@ class Dayofweekhits(models.Model):
     hits = models.IntegerField(null=True, blank=True)
     class Meta:
         db_table = u'DayOfWeekHits'
-        
+
+class Dayofweekhits2(models.Model):
+    name = models.CharField(max_length=255, primary_key=True)
+    type = models.CharField(max_length=150, primary_key=True)
+    weekday = models.CharField(max_length=60, primary_key=True)
+    hits = models.IntegerField(null=True, blank=True)
+    class Meta:
+        db_table = u'DayOfWeekHits2'
+
+class Venuecompleteinformation(models.Model):
+    name = models.CharField(max_length=255, primary_key=True)
+    type = models.CharField(max_length=150, primary_key=True)
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
+    city = models.CharField(max_length=150, blank=True)
+    country = models.CharField(max_length=150, blank=True)
+    class Meta:
+        db_table = u'VenueCompleteInformation'
+
 class Venuehits(models.Model):
     name = models.CharField(max_length=255, primary_key=True)
     type = models.CharField(max_length=150, primary_key=True)
@@ -24,3 +42,11 @@ class Venuehits(models.Model):
     celebrity_hits = models.IntegerField(null=True, blank=True)
     class Meta:
         db_table = u'VenueHits'
+
+class Venuehits2(models.Model):
+    name = models.CharField(max_length=255, primary_key=True)
+    type = models.CharField(max_length=150, primary_key=True)
+    total_hits = models.IntegerField(null=True, blank=True)
+    celebrity_hits = models.IntegerField(null=True, blank=True)
+    class Meta:
+        db_table = u'VenueHits2'

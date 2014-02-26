@@ -2,7 +2,7 @@
 import json
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from models import Dayofweekhits, Venuehits
+from models import Dayofweekhits, Venuehits, Venuecompleteinformation
 from sets import Set
 
 def base(request):
@@ -38,11 +38,12 @@ def top_five(request):
 
 def venue(request):
     context = RequestContext(request)
-    name = request.GET.get('name', '');
+    venueName = request.GET.get('name', '');
     category = request.GET.get('type', '');
-    context_dict = {}
-    context_dict['venueName'] = name
-    context_dict['venueType'] = category
+    context_dict = {}    
+    venueInfo = Venuecompleteinformation.objects.get(name = venueName, type = category)
+
+    context_dict['venueObject'] = venueInfo
     
     return render_to_response('home/venue_page.html', context_dict, context)
 
