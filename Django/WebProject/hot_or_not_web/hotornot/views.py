@@ -2,7 +2,7 @@
 import json
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from models import Dayofweekhits, Venuehits, Venuecompleteinformation
+from models import Dayofweekhits2, Venuehits2, Venuecompleteinformation
 from sets import Set
 
 def base(request):
@@ -56,11 +56,11 @@ def get_data(category):
     categoriesSet = Set()
     
     if category == '':
-        DayofweekhitsObjects = Dayofweekhits.objects.all()
-        VenuehitsObjects = Venuehits.objects.all()
+        DayofweekhitsObjects = Dayofweekhits2.objects.all()
+        VenuehitsObjects = Venuehits2.objects.all()
     else:
-        DayofweekhitsObjects = Dayofweekhits.objects.all().filter(type = category).order_by('-hits')[:5]         
-        VenuehitsObjects = Venuehits.objects.all().filter(type = category).order_by('-total_hits', '-celebrity_hits')[:5]
+        DayofweekhitsObjects = Dayofweekhits2.objects.all().filter(type = category).order_by('-hits')[:5]         
+        VenuehitsObjects = Venuehits2.objects.all().filter(type = category).order_by('-total_hits', '-celebrity_hits')[:5]
         print DayofweekhitsObjects, '\n', VenuehitsObjects
  
     for v in DayofweekhitsObjects:
