@@ -2,7 +2,7 @@
 import json
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from models import Dayofweekhits, Venuehits
+from models import Dayofweekhits2, Venuehits2, Venuecompleteinformation
 from sets import Set
 
 def base(request):
@@ -38,11 +38,12 @@ def top_five(request):
 
 def venue(request):
     context = RequestContext(request)
-    name = request.GET.get('name', '');
+    venueName = request.GET.get('name', '');
     category = request.GET.get('type', '');
-    context_dict = {}
-    context_dict['venueName'] = name
-    context_dict['venueType'] = category
+    context_dict = {}    
+    venueInfo = Venuecompleteinformation.objects.get(name = venueName, type = category)
+
+    context_dict['venueObject'] = venueInfo
     
     return render_to_response('home/venue_page.html', context_dict, context)
 
@@ -55,11 +56,11 @@ def get_data(category):
     categoriesSet = Set()
     
     if category == '':
-        DayofweekhitsObjects = Dayofweekhits.objects.all()
-        VenuehitsObjects = Venuehits.objects.all()
+        DayofweekhitsObjects = Dayofweekhits2.objects.all()
+        VenuehitsObjects = Venuehits2.objects.all()
     else:
-        DayofweekhitsObjects = Dayofweekhits.objects.all().filter(type = category).order_by('-hits')[:5]         
-        VenuehitsObjects = Venuehits.objects.all().filter(type = category).order_by('-total_hits', '-celebrity_hits')[:5]
+        DayofweekhitsObjects = Dayofweekhits2.objects.all().filter(type = category).order_by('-hits')[:5]         
+        VenuehitsObjects = Venuehits2.objects.all().filter(type = category).order_by('-total_hits', '-celebrity_hits')[:5]
         print DayofweekhitsObjects, '\n', VenuehitsObjects
  
     for v in DayofweekhitsObjects:
