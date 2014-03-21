@@ -2,8 +2,9 @@
 import json
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from models import Dayofweekhits2, Venuehits2, Venuecompleteinformation
+from models import Dayofweekhits3, Venuehits3, Venuecompleteinformation, Dayofweekhits, Venuehits
 from sets import Set
+from pickle import APPEND
 
 def base(request):
     context = RequestContext(request)
@@ -56,20 +57,41 @@ def get_data(category):
     categoriesSet = Set()
     
     if category == '':
-        DayofweekhitsObjects = Dayofweekhits2.objects.all()
-        VenuehitsObjects = Venuehits2.objects.all()
+        DayofweekhitsObjects = Dayofweekhits3.objects.all()
+        VenuehitsObjects = Venuehits3.objects.all()
+        for v in DayofweekhitsObjects:
+            if v.name == '':
+                continue
+            
+            vDic = {}
+            name_type = v.name + ',' + v.type        
+            if name_type in jsonData:
+                vDic = jsonData[name_type]
+                
+            vDic[v.weekday] = v.hits
+            jsonData[name_type] = vDic
     else:
-        DayofweekhitsObjects = Dayofweekhits2.objects.all().filter(type = category).order_by('-hits')[:5]         
-        VenuehitsObjects = Venuehits2.objects.all().filter(type = category).order_by('-total_hits', '-celebrity_hits')[:5]
-        print DayofweekhitsObjects, '\n', VenuehitsObjects
- 
-    for v in DayofweekhitsObjects:
-        if v.name == '':
-            continue
-        vDic = {}
-        name_type = v.name + ',' + v.type
-        vDic[v.weekday] = v.hits
-        jsonData[name_type] = vDic  
+        DayofweekhitsObjects = []      
+        VenuehitsObjects = Venuehits3.objects.all().filter(type = category).order_by('-total_hits', '-celebrity_hits')[:5]
+
+        for v in VenuehitsObjects:
+            DayofweekhitsObjects.append(Dayofweekhits3.objects.all().filter(name = v.name).filter(type = category))
+        
+        for object in DayofweekhitsObjects:
+            for v in object:
+                if v.name == '':
+                    continue
+                
+                vDic = {}
+                name_type = v.name + ',' + v.type        
+                if name_type in jsonData:
+                    vDic = jsonData[name_type]
+                    
+                vDic[v.weekday] = v.hits
+                jsonData[name_type] = vDic
+    
+    
+      
     
     for v in VenuehitsObjects:
         if v.name == '':
@@ -86,6 +108,8 @@ def get_data(category):
         
         venues.append(v)
         categoriesSet.add(v.type);
+        
+    
     
     if '' in categoriesSet:   
         categoriesSet.remove('')  
