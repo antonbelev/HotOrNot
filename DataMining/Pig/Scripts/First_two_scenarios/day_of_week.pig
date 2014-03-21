@@ -2,8 +2,9 @@ REGISTER '/users/level3/1103816b/Desktop/HotOrNot_repo/DataMining/Pig/Jars/piggy
 REGISTER '/users/level3/1103816b/Desktop/HotOrNot_repo/DataMining/Pig/Jars/mysql-connector-java-5.1.18-bin.jar';
 
 venues = LOAD 'venues_extended_2.csv' USING org.apache.pig.piggybank.storage.CSVLoader() AS (Name:chararray, Type:chararray, Latitude:chararray, Longitude:chararray, City:chararray, Country:chararray);
+--Tweets_26_02.csv
 --tweets_06_02.csv
-tweets = LOAD 'Final1.csv' USING org.apache.pig.piggybank.storage.CSVLoader() AS (Text:chararray, WeekDay:chararray, Month:chararray, Day:chararray, Time:chararray, Name:chararray, Year:chararray, Location:chararray, Language:chararray, Followerscount:int, Friendscount:int);
+tweets = LOAD 'Tweets_26_02.csv' USING org.apache.pig.piggybank.storage.CSVLoader() AS (Text:chararray, WeekDay:chararray, Month:chararray, Day:chararray, Time:chararray, Name:chararray, Year:chararray, Location:chararray, Language:chararray, Followerscount:int, Friendscount:int);
 
 tweetsReduced = foreach tweets generate Text, WeekDay;
 venuesReduced = foreach venues generate Name, Type;
@@ -22,4 +23,4 @@ venueCounts = FOREACH (GROUP venueMentions BY (venuesReduced::Name, venuesReduce
 flattenVenues = foreach venueCounts generate flatten(group), counter;
 
 --Describe flattenVenues;
-STORE flattenVenues INTO 'DayOfWeekHits1' USING org.apache.pig.piggybank.storage.DBStorage('com.mysql.jdbc.Driver','jdbc:mysql://storo:3306/teamn', 'teamn', '8553mkpw','INSERT IGNORE INTO DayOfWeekHits1 (name, type, weekday, hits) VALUES (?, ?, ?, ?)');
+STORE flattenVenues INTO 'DayOfWeekHits2' USING org.apache.pig.piggybank.storage.DBStorage('com.mysql.jdbc.Driver','jdbc:mysql://storo:3306/teamn', 'teamn', '8553mkpw','INSERT IGNORE INTO DayOfWeekHits2 (name, type, weekday, hits) VALUES (?, ?, ?, ?)');

@@ -3,7 +3,7 @@ REGISTER '/users/level3/1103816b/Desktop/HotOrNot_repo/DataMining/Pig/Jars/mysql
 
 venues = LOAD 'venues_extended_2.csv' USING org.apache.pig.piggybank.storage.CSVLoader() AS (Name:chararray, Type:chararray, Latitude:chararray, Longitude:chararray, City:chararray, Country:chararray);
 --'tweets_06_02.csv'
-tweets = LOAD 'Final1.csv' USING org.apache.pig.piggybank.storage.CSVLoader() AS (Text:chararray, WeekDay:chararray, Month:chararray, Day:chararray, Time:chararray, Name:chararray, Year:chararray, Location:chararray, Language:chararray, Followerscount:chararray, Friendscount:chararray);
+tweets = LOAD 'Tweets_26_02.csv' USING org.apache.pig.piggybank.storage.CSVLoader() AS (Text:chararray, WeekDay:chararray, Month:chararray, Day:chararray, Time:chararray, Name:chararray, Year:chararray, Location:chararray, Language:chararray, Followerscount:chararray, Friendscount:chararray);
 
 tweetsReduced = foreach tweets generate Text;
 venuesReduced = foreach venues generate Name, Type;
@@ -22,4 +22,4 @@ venueCounts = FOREACH (GROUP venueMentions BY (venuesReduced::Name, venuesReduce
 flattenVenues = foreach venueCounts generate flatten(group), counter;
 
 --DUMP venueCounts;
-STORE flattenVenues INTO 'VenueHits1' USING org.apache.pig.piggybank.storage.DBStorage('com.mysql.jdbc.Driver','jdbc:mysql://storo:3306/teamn', 'teamn', '8553mkpw','INSERT IGNORE INTO VenueHits1 (name, type, total_hits) VALUES (?, ?, ?)');
+STORE flattenVenues INTO 'VenueHits2' USING org.apache.pig.piggybank.storage.DBStorage('com.mysql.jdbc.Driver','jdbc:mysql://storo:3306/teamn', 'teamn', '8553mkpw','INSERT IGNORE INTO VenueHits2 (name, type, total_hits) VALUES (?, ?, ?)');
